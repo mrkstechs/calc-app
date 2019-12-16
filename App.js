@@ -7,14 +7,44 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       value: '0',
+      savedVal : 0,
+      operation: '',
     };
   }
 
   backspace = () => {
     let currentVal = this.state.value;
-    let newVal = currentVal.slice(0, currentVal.length - 1);
+    let newVal;
+    if (currentVal == '0' && currentVal.length == 1 || currentVal != '0' && currentVal.length == 1){
+      newVal = '0';
+    } else {
+      newVal = currentVal.slice(0, currentVal.length - 1);
+    }
     this.setState({ value: newVal });
   };
+
+  clear = () => {
+    this.setState({ value: '0' });
+  };
+
+  equals = () => {
+    let ans;
+    switch (this.state.operation) {
+      case '+':
+        ans = this.state.savedVal + parseInt(this.state.value)
+        break;
+      case '-':
+        ans = this.state.savedVal - parseInt(this.state.value)
+        break;
+      case '*':
+        ans = this.state.savedVal * parseInt(this.state.value)
+        break;
+      case '/':
+        ans = this.state.savedVal / parseInt(this.state.value)
+        break;
+    }
+    this.setState({ value: ans})
+  }
 
   render(){
     return (
@@ -30,7 +60,7 @@ export default class App extends React.Component {
           </View>
           <View style={styles.buttons}>
             <View style={styles.btnsHeader}>
-              <TouchableOpacity style={styles.clear}>
+              <TouchableOpacity style={styles.clear} onPress={this.clear}>
                 <Text>Clear</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.clear} onPress={this.backspace}>
@@ -42,30 +72,64 @@ export default class App extends React.Component {
                 <Nine number="9" onPress={
                     () => (this.state.value == '0') ? this.setState({ value: '9'}) : this.setState({ value: this.state.value + '9'})
                   }/>
-                <Eight number="8" />
-                <Seven number="7" />
-                <Six number="6" />
-                <Five number="5" />
-                <Four number="4" />
-                <Three number="3" />
-                <Two number="2" />
-                <One number="1" />
-                <Zero number="0" />
+                <Eight number="8" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '8'}) : this.setState({ value: this.state.value + '8'})
+                  }/>
+                <Seven number="7" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '7'}) : this.setState({ value: this.state.value + '7'})
+                  }/>
+                <Six number="6" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '6'}) : this.setState({ value: this.state.value + '6'})
+                  }/>
+                <Five number="5" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '5'}) : this.setState({ value: this.state.value + '5'})
+                  }/>
+                <Four number="4" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '4'}) : this.setState({ value: this.state.value + '4'})
+                  }/>
+                <Three number="3" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '3'}) : this.setState({ value: this.state.value + '3'})
+                  }/>
+                <Two number="2" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '2'}) : this.setState({ value: this.state.value + '2'})
+                  }/>
+                <One number="1" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '1'}) : this.setState({ value: this.state.value + '1'})
+                  }/>
+                <Zero number="0" onPress={
+                    () => (this.state.value == '0') ? this.setState({ value: '0'}) : this.setState({ value: this.state.value + '0'})
+                  }/>
               </View>
               <View style={styles.operations}>
-                <TouchableOpacity style={styles.oppBtn} op="+">
+                <TouchableOpacity style={styles.oppBtn} op="+" onPress={() =>{
+                  this.state.operation = '+';
+                  this.state.savedVal = parseInt(this.state.value);
+                  this.setState({ value: '0' });
+                } }>
                   <Text>+</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.oppBtn} op="-">
+                <TouchableOpacity style={styles.oppBtn} op="-" onPress={() =>{
+                  this.state.operation = '-';
+                  this.state.savedVal = parseInt(this.state.value);
+                  this.setState({ value: '0' });
+                } }>
                   <Text>-</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.oppBtn} op="*">
+                <TouchableOpacity style={styles.oppBtn} op="*" onPress={() =>{
+                  this.state.operation = '*';
+                  this.state.savedVal = parseInt(this.state.value);
+                  this.setState({ value: '0' });
+                } }>
                   <Text>*</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.oppBtn} op="/">
+                <TouchableOpacity style={styles.oppBtn} op="/" onPress={() =>{
+                  this.state.operation = '/';
+                  this.state.savedVal = parseInt(this.state.value);
+                  this.setState({ value: '0' });
+                } }>
                   <Text>/</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.oppBtnLast}>
+                <TouchableOpacity style={styles.oppBtnLast} onPress={this.equals}>
                   <Text>=</Text>
                 </TouchableOpacity>
               </View>

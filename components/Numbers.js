@@ -24,7 +24,7 @@ class Eight extends React.Component{
 class Seven extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtn} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtn} onPress={this.props.onPress}>
                 <Text>7</Text>
             </TouchableOpacity>
         )
@@ -34,7 +34,7 @@ class Seven extends React.Component{
 class Six extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtn} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtn} onPress={this.props.onPress}>
                 <Text>6</Text>
             </TouchableOpacity>
         )
@@ -44,7 +44,7 @@ class Six extends React.Component{
 class Five extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtn} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtn} onPress={this.props.onPress}>
                 <Text>5</Text>
             </TouchableOpacity>
         )
@@ -54,7 +54,7 @@ class Five extends React.Component{
 class Four extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtn} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtn} onPress={this.props.onPress}>
                 <Text>4</Text>
             </TouchableOpacity>
         )
@@ -64,7 +64,7 @@ class Four extends React.Component{
 class Three extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtn} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtn} onPress={this.props.onPress}>
                 <Text>3</Text>
             </TouchableOpacity>
         )
@@ -74,7 +74,7 @@ class Three extends React.Component{
 class Two extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtn} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtn} onPress={this.props.onPress}>
                 <Text>2</Text>
             </TouchableOpacity>
         )
@@ -84,7 +84,7 @@ class Two extends React.Component{
 class One extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtn} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtn} onPress={this.props.onPress}>
                 <Text>1</Text>
             </TouchableOpacity>
         )
@@ -94,7 +94,7 @@ class One extends React.Component{
 class Zero extends React.Component{
     render(){
         return(
-            <TouchableOpacity style={styles.numBtnLast} onPress={() => console.log(this.props.number)}>
+            <TouchableOpacity style={styles.numBtnLast} onPress={this.props.onPress}>
                 <Text>0</Text>
             </TouchableOpacity>
         )
